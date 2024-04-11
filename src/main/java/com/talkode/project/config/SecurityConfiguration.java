@@ -1,6 +1,5 @@
 package com.talkode.project.config;
 
-import com.talkode.project.entities.enums.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

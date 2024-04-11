@@ -3,10 +3,10 @@ package com.talkode.project.controllers;
 import com.talkode.project.entities.Post;
 import com.talkode.project.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -18,14 +18,18 @@ public class PostController {
         this.postService = postService;
     }
 
-    @PostMapping("/post")
-    public String post(@RequestBody Post post) {
-        this.postService.post(post);
-        return "redirect:http:localhost:8080/";
+    @GetMapping("/")
+    public ResponseEntity<List<Post>> index() {
+        return ResponseEntity.ok(this.postService.findAll());
     }
 
-    @GetMapping("/posts")
-    public List<Post> getPosts() {
-        return this.postService.findAll();
+    @PostMapping("/post")
+    public RedirectView post(@RequestBody Post post) {
+        this.postService.post(post);
+
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://localhost:8080/");
+
+        return redirectView;
     }
 }

@@ -26,13 +26,13 @@ public class CustomUser implements UserDetails {
 
     public CustomUser() {}
 
-    public CustomUser(String name, String username, String hash, Role role) {
+    public CustomUser(String name, String username, String hash) {
         this.name = name;
         this.username = username;
         this.hash = hash;
         this.posts = new ArrayList<>();
         this.comments = new ArrayList<>();
-        this.role = role;
+        this.role = Role.USER;
     }
 
     public UUID getId() {
@@ -45,6 +45,10 @@ public class CustomUser implements UserDetails {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override

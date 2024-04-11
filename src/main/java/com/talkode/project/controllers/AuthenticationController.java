@@ -5,7 +5,6 @@ import com.talkode.project.controllers.dto.AuthenticationDTO;
 import com.talkode.project.controllers.dto.RegisterDTO;
 import com.talkode.project.entities.CustomUser;
 import com.talkode.project.entities.LoginResponseDTO;
-import com.talkode.project.entities.enums.Role;
 import com.talkode.project.exceptions.NameLengthException;
 import com.talkode.project.exceptions.PasswordLengthException;
 import com.talkode.project.exceptions.UsernameExistsException;
@@ -62,7 +61,7 @@ public class AuthenticationController {
             throw new PasswordLengthException();
 
         String hash = new BCryptPasswordEncoder().encode(request.password());
-        CustomUser user = new CustomUser(name, username, hash, request.role());
+        CustomUser user = new CustomUser(name, username, hash);
 
         this.userRepository.save(user);
         return ResponseEntity.ok().build();
