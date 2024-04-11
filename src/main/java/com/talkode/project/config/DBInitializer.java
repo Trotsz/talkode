@@ -21,6 +21,7 @@ public class DBInitializer implements CommandLineRunner {
                 "admin",
                 new BCryptPasswordEncoder().encode("rKqOtuMNE24Cr4Qi")
         );
+
         this.userRepository.save(user);
     }
 }
