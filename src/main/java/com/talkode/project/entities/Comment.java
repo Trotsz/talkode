@@ -1,5 +1,6 @@
 package com.talkode.project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,15 +9,23 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String text;
+    @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "post_id", referencedColumnName = "id")
     private Post post;
+
+    @JsonIgnore
+    @ManyToOne
+    private CustomUser user;
+
+    public Comment() {}
+
+    public Comment(String text) {
+        this.text = text;
+    }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getText() {
@@ -40,17 +49,6 @@ public class Comment {
     }
 
     public void setUser(CustomUser user) {
-        this.user = user;
-    }
-
-    @ManyToOne
-    private CustomUser user;
-
-    public Comment() {}
-
-    public Comment(String text, Post post, CustomUser user) {
-        this.text = text;
-        this.post = post;
         this.user = user;
     }
 }

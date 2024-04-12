@@ -49,4 +49,11 @@ public class ExceptionHandling {
     public String tokenValidationException(TokenValidationException ex) {
         return ex.getMessage();
     }
+
+    @ResponseBody
+    @ExceptionHandler(EmptyException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String tokenValidationException(EmptyException ex) {
+        return ex.getMessage();
+    }
 }

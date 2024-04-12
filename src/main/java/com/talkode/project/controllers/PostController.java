@@ -5,7 +5,6 @@ import com.talkode.project.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -14,9 +13,6 @@ import java.util.List;
 public class PostController {
     @Autowired
     private PostService postService;
-    public PostController(PostService postService) {
-        this.postService = postService;
-    }
 
     @GetMapping("/")
     public ResponseEntity<List<Post>> index() {

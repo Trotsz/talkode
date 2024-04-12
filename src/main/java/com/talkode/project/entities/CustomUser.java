@@ -18,7 +18,7 @@ public class CustomUser implements UserDetails {
     private String hash;
     private Role role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Post> posts;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
