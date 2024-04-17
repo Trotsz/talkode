@@ -17,6 +17,7 @@ public class CustomUser implements UserDetails {
     private String username;
     private String hash;
     private Role role;
+    private List<Long> likedPosts;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Post> posts;
@@ -32,6 +33,7 @@ public class CustomUser implements UserDetails {
         this.hash = hash;
         this.posts = new ArrayList<>();
         this.comments = new ArrayList<>();
+        this.likedPosts = new ArrayList<>();
         this.role = Role.USER;
     }
 
@@ -49,6 +51,29 @@ public class CustomUser implements UserDetails {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public List<Long> getLikedPosts() {
+        return this.likedPosts;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getHash() {
+        return this.hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
     }
 
     @Override
@@ -87,26 +112,6 @@ public class CustomUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getHash() {
-        return this.hash;
-    }
-
-    public void setHash(String hash) {
-        this.hash = hash;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public List<Post> getPosts() {
-        return posts;
     }
 
     public int hashCode() {
