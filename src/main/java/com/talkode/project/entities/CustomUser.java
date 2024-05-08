@@ -69,11 +69,11 @@ public class CustomUser implements UserDetails {
     }
 
     public List<Comment> getComments() {
-        return comments;
+        return this.comments;
     }
 
     public List<Post> getPosts() {
-        return posts;
+        return this.posts;
     }
 
     @Override

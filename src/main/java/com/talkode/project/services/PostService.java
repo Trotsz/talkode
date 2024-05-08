@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -28,14 +29,23 @@ public class PostService {
 
         post.setUser(user);
         post.setLikeCount(0);
+        post.setCommentCount(0);
 
         user.getPosts().add(post);
-
         this.postRepository.save(post);
     }
 
     public List<Post> findAll() {
         return this.postRepository.findAll();
+    }
+
+    public Post findById(Long post_id) {
+        Post post = this.postRepository.findById(post_id).orElse(null);
+        return post;
+    }
+
+    public List<Post> findAllByOrderByTimestampDesc() {
+        return this.postRepository.findAllByOrderByTimestampDesc();
     }
 
     public void like(LikeDTO likeDTO) {
