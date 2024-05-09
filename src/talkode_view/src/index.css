@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*--------------- CORPO ----------------*/
+/*--------------- DIVS GERAIS ----------------*/
+.full-div {
+  margin: 0px;
+  padding: 0px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.flex-account {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+:hover {
+  transition: ease-in 0.2s;
+}
+
+.logo {
+  width: auto;
+  height: 350px;
+}
+
+/*--------------------------- BUTTONS -----------------------------*/
+/*---- PRINCIPAL ----*/
+.button-primary {
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: #a28aeb;
+  background-size: 400%;
+  color: #fff;
+  border: none;
+}
+
+.button-primary:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+  border-bottom: solid 2px #330da3;
+}
+
+.button-primary:hover::before {
+  transform: scale(1);
+  filter: blur(0px);
+  opacity: 1;
+}
+
+.button-primary::before {
+  content: "";
+  filter: blur(10px);
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(0);
+  transform-origin: 50% 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: linear-gradient(82.3deg, #965de9 10.8%, #6358ee 94.3%);
+  transition: all 0.5s;
+}
+
+.button-content {
+  position: relative;
+  z-index: 1;
+}
+
+/*---- SECUNDARIO ----*/
+.button-secondary {
+  font-size: 18px;
+  font-family: inherit;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+.button-secondary:focus,
+.button-secondary:hover {
+  color: #4609ff;
+}
+
+.button-secondary:focus:after,
+.button-secondary:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.button-secondary:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #4609ff;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
