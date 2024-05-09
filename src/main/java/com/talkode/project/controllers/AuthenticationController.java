@@ -50,7 +50,7 @@ public class AuthenticationController {
         String username = request.username();
         String password = request.password();
 
-        if(name.length() == 0)
+        if(name.length() < 3)
             throw new NameLengthException();
 
         if (this.userRepository.findByUsername(username) != null)
